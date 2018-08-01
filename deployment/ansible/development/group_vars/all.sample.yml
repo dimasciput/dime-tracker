@@ -1,0 +1,69 @@
+---
+# Set to yes, if you're using pycharm for development
+# Otherwise, set no
+use_pycharm: yes
+# Your linux/mac user that will run ansible
+remote_user: staff
+# Your linux/mac group that will run ansible
+remote_group: staff
+# Your project location (this repo)
+project_path: "/Users/kartoza/Documents/WorkingDir/Projects/kartoza/dime-tracker"
+# True if it will be running on Travis
+
+on_travis: False
+btsync_db:
+  environment:
+      # The environment file should define two variables:
+      # SECRET: a RW btsync key if the server is a production server
+      #         a RO btsync key if it is staging or development machine
+      # DEVICE: a unique device name so you can recognise which host is being peered with in btsync
+      # See the btsync example env in this folder for a template
+      SECRET:
+      DEVICE:
+
+btsync_media:
+  environment:
+      # The environment file should define two variables:
+      # SECRET: a RW btsync key if the server is a production server
+      #         a RO btsync key if it is staging or development machine
+      # DEVICE: a unique device name so you can recognise which host is being peered with in btsync
+      # See the btsync example env in this folder for a template
+      SECRET:
+      DEVICE:
+
+django:
+  # Use this for debug mode. Comment for prod mode
+  command: /usr/sbin/sshd -D
+  environment:
+    SITE_DOMAIN_NAME: 'http://dime-tracker.test'
+    CONTACT_US_EMAIL: 'dimas@kartoza.com'
+    DEBUG: True
+    DJANGO_SETTINGS_MODULE: core.settings.dev_docker
+    PYTHONPATH: /home/web/django_project
+    ROOT_URLCONF: core.urls
+    DATABASE_NAME: gis
+    DATABASE_PASSWORD: docker
+    DATABASE_USERNAME: docker
+    DATABASE_HOST: db
+    SITEURL: http://dime-tracker.test/
+
+web:
+  # Use this for debug mode. Comment for prod mode
+  command: debug
+  # just another key to make sure web is a dict
+  environment:
+
+interpreters:
+  django:
+    name: 'Dime Tracker'
+    domain_alias: 'dime-tracker.test'
+    ssh_port: &inasafe_django_ssh_port 62203
+    pycharm_helpers: /home/web/django_project/.pycharm_helpers
+    ipaddress: &inasafe_django_host_ip dime-tracker.test
+
+docker_port_forward:
+  django:
+    db: 62543
+    ssh: 62203
+  web:
+    http: 62202

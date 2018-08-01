@@ -1,0 +1,43 @@
+---
+
+# Set to yes, if you're using pycharm for development
+# Otherwise, set no
+use_pycharm: no
+# Your linux/mac user that will run ansible
+remote_user: travis
+# Your linux/mac group that will run ansible
+remote_group: travis
+# Your project location (this repo)
+project_path: "/home/travis/build/kartoza/dime-tracker"
+# True if it will be running on Travis
+on_travis: True
+
+django:
+  environment:
+    SITE_DOMAIN_NAME: 'http://uwsgi'
+    CONTACT_US_EMAIL: 'dimas@kartoza.com'
+    DEBUG: True
+    DJANGO_SETTINGS_MODULE: core.settings.dev_docker
+    PYTHONPATH: /home/web/django_project
+    ROOT_URLCONF: core.urls
+    DATABASE_NAME: gis
+    DATABASE_PASSWORD: docker
+    DATABASE_USERNAME: docker
+    DATABASE_HOST: db
+    SITEURL: http://uwsgi/
+    SECRET_KEY: 'tT\xd7\xb06\xf7\x9b\xff\x0fZL\xca\xca\x11\xefM\xacr\xfb\xdf\xca\x9b'
+
+interpreters:
+  inasafe_django:
+    name: 'Dime Container'
+    domain_alias: 'uwsgi'
+    ssh_port: &inasafe_django_ssh_port 63303
+    pycharm_helpers: /home/web/django_project/.pycharm_helpers
+    ipaddress: &inasafe_django_host_ip uwsgi
+
+docker_port_forward:
+  django:
+    db: 62543
+    ssh: 62203
+  web:
+    http: 62202
