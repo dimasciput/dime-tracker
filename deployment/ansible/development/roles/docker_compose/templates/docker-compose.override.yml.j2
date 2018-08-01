@@ -67,6 +67,8 @@ services:
       - ./logs:/var/log/
       - ../.pycharm_helpers:/root/.pycharm_helpers
     ports:
+      # for django test server
+      - "{{ docker_port_forward.django.http }}:8080"
       # for ssh
       - "{{ docker_port_forward.django.ssh }}:22"
 

@@ -63,7 +63,8 @@ interpreters:
 
 docker_port_forward:
   django:
+    http: 62202
     db: 62543
     ssh: 62203
   web:
-    http: 62202
+    http: 62201

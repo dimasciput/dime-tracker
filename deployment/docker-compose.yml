@@ -54,6 +54,7 @@ services:
     build:
       context: docker
     hostname: uwsgi
+    working_dir: /home/web/django_project
     entrypoint: []
     environment:
       - DATABASE_NAME=gis

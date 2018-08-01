@@ -23,7 +23,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/django_project/base/templates" />
+        <option value="$MODULE_DIR$/django_project/core/base_templates" />
       </list>
     </option>
   </component>
