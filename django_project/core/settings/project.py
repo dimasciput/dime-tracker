@@ -12,6 +12,7 @@ from .contrib import *  # noqa
 
 # Project apps
 INSTALLED_APPS += (
+    'nickle',
 )
 
 # Set languages which want to be translated
