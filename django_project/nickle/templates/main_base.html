@@ -10,8 +10,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dime Tracker</title>
+    <title>Dime Tracker - {% block sub_title%} {% endblock %}</title>
 
+    {% block header_scripts %}
     <!-- Bootstrap core CSS-->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -25,11 +26,13 @@
     <link href="{% static 'css/nickle.css' %}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    {% endblock %}
 
 </head>
 
 <body id="page-top" class="sidebar-toggled">
 
+{% block navbar %}
 <nav class="navbar navbar-expand navbar-dark navbar-bg static-top">
 
     <a class="navbar-brand mr-1" href="index.html">Dime Tracker</a>
@@ -82,9 +85,12 @@
     </ul>
 
 </nav>
+{% endblock %}
+
 
 <div id="wrapper">
 
+    {% block sidebar %}
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav toggled">
         <li class="nav-item active">
@@ -120,106 +126,14 @@
                 <span>Tables</span></a>
         </li>
     </ul>
+    {% endblock %}
 
     <div id="content-wrapper">
 
-        <div class="container-fluid">
+        {% block body_content %}
+        {% endblock %}
 
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item active">Overview</li>
-            </ol>
-
-            <!-- Icon Cards-->
-            <div class="row">
-
-                <div class="col-xl-12 col-sm-12 mb-3">
-                    <div class="card text-white bg-light-blue o-hidden h-100">
-                        <div class="card-body">
-                            <div class="card-body-icon">
-                                <i class="fas fa-fw fa-list"></i>
-                            </div>
-                            <div class="mr-5">11 New Tasks!</div>
-                        </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
-                            <span class="float-left">View Details</span>
-                            <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Area Chart Example-->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-chart-area"></i>
-                    Area Chart Example</div>
-                <div class="card-body">
-                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>
-
-            <!-- DataTables Example -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Data Table Example</div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
+        {% block footer %}
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
@@ -228,6 +142,7 @@
                 </div>
             </div>
         </footer>
+        {% endblock %}
 
     </div>
     <!-- /.content-wrapper -->
@@ -259,6 +174,7 @@
     </div>
 </div>
 
+{% block footer_scripts %}
 <!-- Bootstrap core JavaScript-->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -266,17 +182,12 @@
 <!-- Core plugin JavaScript-->
 <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-<!-- Page level plugin JavaScript-->
-<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
-<script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
-<script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="{% static 'js/nickle.js' %}"></script>
+{% endblock %}
 
-<!-- Demo scripts for this page-->
-<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
-<script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+{% block chart_scripts %}
+{% endblock %}
 
 </body>
 

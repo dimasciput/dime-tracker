@@ -13,3 +13,6 @@ pytz
 django-allauth==0.35.0
 
 djangorestframework==3.7.7
+
+# toggl api wrapper
+git+https://github.com/dimasciput/togglwrapper
